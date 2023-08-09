@@ -14,6 +14,8 @@ namespace DevHobby.Controllers
 
         public IActionResult List()
         {
+            ViewBag.Title = "Dev-Hobby - najlepsze kursy programistyczne !";
+
             var result = _courseRepository.AllCourses;
             return View(result);
         }
