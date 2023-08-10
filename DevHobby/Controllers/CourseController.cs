@@ -1,4 +1,5 @@
 ﻿using DevHobby.Models.Repositories;
+using DevHobby.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevHobby.Controllers
@@ -14,10 +15,11 @@ namespace DevHobby.Controllers
 
         public IActionResult List()
         {
-            ViewBag.Title = "Dev-Hobby - najlepsze kursy programistyczne !";
+            var courseListViewModel = new CourseListViewModel(
+                _courseRepository.AllCourses,
+                "Dev-Hobby - najlepsze kursy programistyczne !");
 
-            var result = _courseRepository.AllCourses;
-            return View(result);
+            return View(courseListViewModel);
         }
     }
 }

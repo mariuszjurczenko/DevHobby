@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DevHobby.Models.Entities.Course>
+﻿@model DevHobby.ViewModels.CourseListViewModel
 
 <!DOCTYPE html>
 <html>
@@ -7,9 +7,9 @@
     <title>Dev-hobby.pl</title>
 </head>
 <body>
-    <h1>@ViewBag.Title</h1>
+    <h1>@Model.Title</h1>
 
-    @foreach (var course in Model)
+    @foreach (var course in Model.Courses)
     {
         <div>
             <h1>@course.Category.Name</h1>
