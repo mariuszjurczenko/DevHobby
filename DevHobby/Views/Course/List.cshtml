@@ -1,54 +1,46 @@
-﻿@model DevHobby.ViewModels.CourseListViewModel
+﻿@model CourseListViewModel
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Dev-hobby.pl</title>
-</head>
-<body>
-    <h1>@Model.Title</h1>
+<h1>@Model.Title</h1>
 
-    @foreach (var course in Model.Courses)
-    {
+@foreach (var course in Model.Courses)
+{
+    <div>
+        <h1>@course.Category.Name</h1>
+        <h2>@course.Name</h2>
+        <h3>@course.Author</h3>
+        <h3>@course.Price.ToString("c")</h3>
+        <p>@course.Description.Name</p>
+        <p>@course.Description.Content</p>
+        <ul>
+            @foreach (var youLearn in course.Description.WhatWillYouLearn)
+            {
+                <li>
+                    @youLearn.Content
+                </li>
+            }
+        </ul>
         <div>
-            <h1>@course.Category.Name</h1>
-            <h2>@course.Name</h2>
-            <h3>@course.Author</h3>
-            <h3>@course.Price.ToString("c")</h3>
-            <p>@course.Description.Name</p>
-            <p>@course.Description.Content</p>
-            <ul>
-                @foreach (var youLearn in course.Description.WhatWillYouLearn)
+            <img src="@course.ImageUrl" />
+        </div>
+        <ul>
+            @foreach (var program in course.CourseContent)
+            {
+                @foreach (var chapter in program.Chapters)
                 {
                     <li>
-                        @youLearn.Content
+                        @chapter.Name
+                        <ul>
+                            @foreach (var leson in chapter.Lessons)
+                            {
+                                <li>
+                                    @leson.Name - @leson.Duration
+                                </li>
+                            }
+                        </ul>
                     </li>
                 }
-            </ul>
-            <div>
-                <img src="@course.ImageUrl" />
-            </div>
-            <ul>
-                @foreach (var program in course.CourseContent)
-                {
-                    @foreach (var chapter in program.Chapters)
-                    {
-                        <li>
-                            @chapter.Name
-                            <ul>
-                                @foreach (var leson in chapter.Lessons)
-                                {
-                                    <li>
-                                        @leson.Name - @leson.Duration
-                                    </li>
-                                }
-                            </ul>
-                        </li>
-                    }
-                }
-            </ul>
-        </div>
-    }
-</body>
-</html>
+            }
+        </ul>
+    </div>
+}
+
