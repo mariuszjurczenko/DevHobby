@@ -4554,7 +4554,7 @@ public class MockCourseRepository : ICourseRepository
                 Author = "Mariusz Jurczenko",
                 Price = 100,
                 ImageUrl = "https://dev-hobby.pl/wordpress/wp-content/uploads/2020/09/ASP.NET-Core-2.1-MVC-Web-Devrloper.png",
-                ImageThumbnailUrl = "https://dev-hobby.pl/wordpress/wp-content/uploads/2020/09/PASP.NET-Core-2.1-MVC-Web-Devrloper-300x169.png",
+                ImageThumbnailUrl = "https://dev-hobby.pl/wordpress/wp-content/uploads/2020/09/ASP.NET-Core-2.1-MVC-Web-Devrloper-300x169.png",
                 IsCourseOfTheMonth = false,
                 IsRecommended = true,
                 Description = new Description

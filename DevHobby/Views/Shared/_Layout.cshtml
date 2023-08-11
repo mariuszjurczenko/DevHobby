@@ -1,12 +1,35 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
     <title>Dev-hobby.pl</title>
+    <meta name="description" content="">
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="~/Images/dev-hobby-logo.png" alt="Dev-Hobby.pl">
+            </a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Szukaj" aria-label="Szukaj">
+                <button class="btn btn-outline-success" type="submit">Szukaj</button>
+            </form>
+        </div>
+    </nav>
+
+    <main>
+        <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
+
