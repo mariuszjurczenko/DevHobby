@@ -12,8 +12,8 @@ builder.Services.AddDbContext<DevHobbyDbContext>(options =>
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
-builder.Services.AddScoped<ICourseRepository, MockCourseRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 
 var app = builder.Build();
 
