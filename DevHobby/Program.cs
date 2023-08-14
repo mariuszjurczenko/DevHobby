@@ -1,6 +1,15 @@
+using DevHobby.Models;
 using DevHobby.Models.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<DevHobbyDbContext>(options =>
+{
+    options.UseSqlServer(
+         builder.Configuration["ConnectionStrings:DevHobbyDbContextConnection"]);
+});
+
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
