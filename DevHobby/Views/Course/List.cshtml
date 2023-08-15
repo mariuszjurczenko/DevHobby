@@ -14,7 +14,11 @@
                      alt="@course.Name">
                 <div class="card-body">
                     <h3 class="card-title">@course.Category.Name</h3>
-                    <h5 class="card-text">@course.Name</h5>
+                    <h5 class="card-text">
+                        <a  asp-controller="Course" 
+                            asp-action="Details" 
+                            asp-route-id="@course.CourseId">@course.Name</a>
+                    </h5>
                     <div class="d-flex justify-content-between align-items-center">
                         <a href="#" class="btn btn-primary">@course.Price.ToString("c")</a>
                         <small class="text-body-secondary">@course.Author</small>

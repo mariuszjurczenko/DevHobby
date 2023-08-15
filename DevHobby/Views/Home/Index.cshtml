@@ -17,7 +17,9 @@
                      alt="@course.Name">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="">
+                        <a  asp-controller="Course" 
+                            asp-action="Details" 
+                            asp-route-id="@course.CourseId">
                             @course.Name
                         </a>
                     </h5>
