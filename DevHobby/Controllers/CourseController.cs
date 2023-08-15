@@ -21,5 +21,17 @@ namespace DevHobby.Controllers
 
             return View(courseListViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var course = _courseRepository.GetCourseById(id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
+        }
     }
 }

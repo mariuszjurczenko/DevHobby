@@ -1,0 +1,167 @@
+﻿@model Course
+
+<h3 class="my-5">
+    @Model.Name
+</h3>
+
+<div class="row gx-5">
+    <img alt="@Model.Name" src="@Model.ImageUrl" class="img-fluid col-5" />
+    <div class="col-7">
+        <h4>@Model.Description.Content.Substring(0,400) ...</h4>
+        @if (@Model.IsCourseOfTheMonth)
+        {
+            <h3>Ten kurs zyskał status Kursu Miesiąca</h3>
+        }
+        <p>@Model.Author</p>
+        <h3 class="pull-right">@Model.Price.ToString("c")</h3>
+        <div class="addToCart">
+            <p class="button">
+            </p>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#tab1">Opis kursu</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab2">Program</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab3">FAQ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab4">Ogłoszenia</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab5">Opinie</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab1">
+            <div class="accordion" id="description">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Czego się nauczysz
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#description">
+                        <div class="accordion-body">
+                            <ul>
+                                @foreach (var whatWillYouLearn in Model.Description.WhatWillYouLearn!)
+                                {
+                                    <li>
+                                        @whatWillYouLearn.Content
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Jakie są wymagania wstępne
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#description">
+                        <div class="accordion-body">
+                            <ul>
+                                @foreach (var requirements in Model.Description.Requirements!)
+                                {
+                                    <li>
+                                        @requirements.Content
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Do kogo jest ten kurs
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#description">
+                        <div class="accordion-body">
+                            <ul>
+                                @foreach (var whoIsThisCourseFor in Model.Description.WhoIsThisCourseFor!)
+                                {
+                                    <li>
+                                        @whoIsThisCourseFor.Content
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab2">
+            <div>
+                @foreach (var content in Model.CourseContent)
+                {
+                    @foreach (var chapter in content.Chapters!)
+                    {
+                        <div class="accordion" id="whatWillYouLearn">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#@chapter.ChapterId" aria-expanded="true" aria-controls="collapseOne">
+                                        @chapter.Name
+                                    </button>
+                                </h2>
+                                <div id="@chapter.ChapterId" class="accordion-collapse collapse" data-bs-parent="#whatWillYouLearn">
+                                    <ol class="accordion-body">
+                                        @foreach (var leson in chapter.Lessons!)
+                                        {
+                                            <li>@leson.Name - @leson.Duration</li>
+                                        }
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab3">
+            <br />
+            <ul>
+                @foreach (var faq in Model.Faq!)
+                {
+                    <li>
+                        @faq.Question - @faq.Answer
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="tab4">
+            <br />
+            <ul>
+                @foreach (var item in Model.Announcements!)
+                {
+                    <li>
+                        @item.Content
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="tab5">
+            <br />
+            <ul>
+                @foreach (var item in Model.Opinions!)
+                {
+                    <li>
+                        @item.Content
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
