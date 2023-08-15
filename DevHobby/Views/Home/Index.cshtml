@@ -1,0 +1,33 @@
+﻿@model HomeViewModel
+
+<div class="text-center">
+    <h1>Kursy miesiąca</h1>
+    <h5>Ulubione kursy w tym miesiącu</h5>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    @foreach (var course in Model.CoursesOfTheMonth)
+    {
+        <div class="col">
+            <div class="card shadow-sm">
+                <img class="bd-placeholder-img card-img-top"
+                     width="188"
+                     height="225"
+                     src="@course.ImageThumbnailUrl"
+                     alt="@course.Name">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="">
+                            @course.Name
+                        </a>
+                    </h5>
+                    <p class="card-text">@course.Description.Name</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="#" class="btn btn-primary">@course.Price.ToString("c")</a>
+                        <small class="text-body-secondary">@course.Author</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
