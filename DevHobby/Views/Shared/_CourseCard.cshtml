@@ -1,0 +1,25 @@
+﻿@model Course
+
+<div class="col">
+    <div class="card shadow-sm">
+        <img class="bd-placeholder-img card-img-top"
+             width="188"
+             height="225"
+             src="@Model.ImageThumbnailUrl"
+             alt="@Model.Name">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a asp-controller="Course"
+                   asp-action="Details"
+                   asp-route-id="@Model.CourseId">
+                    @Model.Name
+                </a>
+            </h5>
+            <p class="card-text">@Model.Description.Name</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="btn btn-primary">@Model.Price.ToString("c")</a>
+                <small class="text-body-secondary">@Model.Author</small>
+            </div>
+        </div>
+    </div>
+</div>
