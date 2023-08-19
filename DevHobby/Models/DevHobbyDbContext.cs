@@ -22,5 +22,7 @@ namespace DevHobby.Models
         public DbSet<WhatWillYouLearn> WhatWillYouLearn { get; set; }
         public DbSet<WhoIsThisCourseFor> WhoIsThisCourseFor { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }
