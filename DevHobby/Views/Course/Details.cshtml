@@ -16,6 +16,12 @@
         <h3 class="pull-right">@Model.Price.ToString("c")</h3>
         <div class="addToCart">
             <p class="button">
+                <a class="btn btn-secondary" 
+                    asp-controller="ShoppingCart" 
+                    asp-action="AddToShoppingCart" 
+                    asp-route-courseId="@Model.CourseId" >
+                    Dodaj do koszyka
+                </a>
             </p>
         </div>
     </div>

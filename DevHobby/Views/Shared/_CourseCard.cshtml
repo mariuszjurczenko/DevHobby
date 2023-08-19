@@ -19,6 +19,16 @@
             <div class="d-flex justify-content-between align-items-center">
                 <a href="#" class="btn btn-primary">@Model.Price.ToString("c")</a>
                 <small class="text-body-secondary">@Model.Author</small>
+                <div class="addToCart">
+                    <p class="button">
+                        <a class="btn btn-secondary"
+                           asp-controller="ShoppingCart"
+                           asp-action="AddToShoppingCart"
+                           asp-route-courseId="@Model.CourseId">
+                            Dodaj do koszyka
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
