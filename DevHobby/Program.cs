@@ -14,10 +14,14 @@ builder.Services.AddDbContext<DevHobbyDbContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
 app.UseStaticFiles();
+app.UseSession();
 
 if (app.Environment.IsDevelopment())
 {
