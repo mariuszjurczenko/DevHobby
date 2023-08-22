@@ -1,9 +1,10 @@
 ﻿using DevHobby.Models.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevHobby.Models
 {
-    public class DevHobbyDbContext : DbContext
+    public class DevHobbyDbContext : IdentityDbContext
     {
         public DevHobbyDbContext(DbContextOptions<DevHobbyDbContext> options) : base(options)
         {

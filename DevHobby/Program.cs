@@ -21,6 +21,7 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+app.UseAuthentication();
 app.UseStaticFiles();
 app.UseSession();
 
